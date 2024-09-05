@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+import Login from './login';
+import Logout from './logout';
+import { createRoot } from 'react-dom/client';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const clientId="989727333395-mubnh7u9t0mshv7bc68u0a03hntfg3k2.apps.googleusercontent.com";
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(
+  <GoogleOAuthProvider clientId={clientId}>
+    <React.StrictMode>
+      <App />
+      
+    </React.StrictMode>
+  </GoogleOAuthProvider>
+);
+function App(){
+
+  return(
+    <div className='App'>
+      <Login/>
+      <Logout/>
     </div>
   );
-}
+};
 
 export default App;
